@@ -1,17 +1,17 @@
 [ 
-  {
-    "src": "images/dainoi.jpg",
-    "alt": "Đại Nội Huế (local)",
-    "credit": "Local (provided)"
-  },
-  {
-    "src": "images/songhuong.png",
-    "alt": "Sông Hương (local)",
-    "credit": "Local (provided)"
-  },
-  {
-    "src": "images/chuathienmu.png",
-    "alt": "Chùa Thiên Mụ (local)",
-    "credit": "Local (provided)"
-  }
+    {
+        "src": "images/songhuong.png",
+        "alt": "Sông Hương (local)",
+        "credit": "Local (provided)"
+    },
+    {
+        "src": "images/chuathienmu.png",
+        "alt": "Chùa Thiên Mụ (local)",
+        "credit": "Local (provided)"
+    },
+    {
+        "src": "images/quochoc.jpg",
+        "alt": "Quốc Học (local)",
+        "credit": "Local (provided)"
+    }
 ]

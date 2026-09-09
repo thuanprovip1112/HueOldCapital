@@ -58,21 +58,28 @@
 					<p>Ngôi chùa cổ kính nằm bên sông, biểu tượng tinh thần của Huế.</p>
 				</li>
 			</ul>
+			<div class="section-gallery" id="gallery-attractions" aria-live="polite"></div>
 		</section>
 
 		<section id="history" class="container section">
 			<h3>Lịch sử ngắn gọn</h3>
 			<p>Huế phát triển mạnh mẽ dưới triều Nguyễn và là trung tâm chính trị, văn hoá của Việt Nam trong hơn một thế kỷ. Nhiều dấu tích và tư liệu lịch sử vẫn được bảo tồn trong di tích và bảo tàng.</p>
+			<div class="section-gallery" id="gallery-history" aria-live="polite"></div>
 		</section>
 
 		<section id="culture" class="container section">
 			<h3>Văn hoá & Lễ hội</h3>
 			<p>Huế nổi bật với ca Huế (nhã nhạc cung đình), lễ hội áo dài, và các nghi lễ cung đình. Du khách thường tới đúng dịp Festival Huế để thưởng thức nhiều hoạt động nghệ thuật.</p>
+			<div class="section-gallery" id="gallery-culture" aria-live="polite"></div>
 		</section>
 
 		<section id="food" class="container section">
 			<h3>Ẩm thực Huế</h3>
-			<p>Ẩm thực Huế đậm đà và tinh tế: bún bò Huế, bánh bèo, bánh nậm, cơm hến, và nhiều món ăn cung đình đặc sắc.</p>
+			<div class="food-layout">
+				<p>Ẩm thực Huế đậm đà và tinh tế: bún bò Huế, bánh bèo, bánh nậm, cơm hến, và nhiều món ăn cung đình đặc sắc.</p>
+				<img src="images/food.svg" alt="Ẩm thực Huế" class="food-img">
+			</div>
+			<div class="section-gallery" id="gallery-food" aria-live="polite"></div>
 		</section>
 
 		<section id="gallery" class="container section gallery-section">
@@ -82,7 +89,10 @@
 			</div>
 			<div id="lightbox" class="lightbox" aria-hidden="true">
 				<button id="closeLightbox" class="close">×</button>
-				<img id="lightboxImg" src="" alt="">
+				<div class="lightbox-inner">
+					<img id="lightboxImg" src="" alt="">
+					<div id="lightboxCaption" class="lightbox-caption"></div>
+				</div>
 			</div>
 		</section>
 

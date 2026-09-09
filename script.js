@@ -16,24 +16,86 @@ document.addEventListener('DOMContentLoaded',()=>{
     lightboxImg.alt = ''
   }
 
+  // Load images for the main gallery (images.json used earlier) and per-section galleries (images_by_section.json)
   async function loadImages(){
+    // populate main gallery from images/gallery/index.json if present (preferred)
+    const mainGallery = document.getElementById('galleryGrid')
+    if(mainGallery){
+      mainGallery.innerHTML = ''
+      try{
+        const galleryIndexRes = await fetch('images/gallery/index.json')
+        if(galleryIndexRes.ok){
+          const list = await galleryIndexRes.json()
+          list.forEach(item=>{
+            const figure = document.createElement('figure')
+            const img = document.createElement('img')
+            img.src = item.src
+            img.alt = item.alt || ''
+            img.setAttribute('data-full', item.src)
+            img.loading = 'lazy'
+            figure.appendChild(img)
+            if(item.credit){
+              const figcap = document.createElement('figcaption')
+              figcap.textContent = item.credit
+              figure.appendChild(figcap)
+            }
+            mainGallery.appendChild(figure)
+          })
+        }else{
+          // fallback to images.json
+          const res = await fetch('images.json')
+          if(res.ok){
+            const list = await res.json()
+            list.forEach(item=>{
+              const figure = document.createElement('figure')
+              const img = document.createElement('img')
+              img.src = item.src
+              img.alt = item.alt || ''
+              img.setAttribute('data-full', item.src)
+              img.loading = 'lazy'
+              figure.appendChild(img)
+              if(item.credit){
+                const figcap = document.createElement('figcaption')
+                figcap.textContent = item.credit
+                figure.appendChild(figcap)
+              }
+              mainGallery.appendChild(figure)
+            })
+          }
+        }
+      }catch(err){
+        console.warn('Could not load main gallery index or images.json', err)
+      }
+    }
+
+    // populate section galleries from images_by_section.json
     try{
-      const res = await fetch('images.json')
-      if(!res.ok) throw new Error('Failed to load')
-      const list = await res.json()
-      gallery.innerHTML = ''
-      list.forEach(item=>{
-        const img = document.createElement('img')
-        img.src = item.src
-        img.alt = item.alt || ''
-        img.setAttribute('data-full', item.src)
-        img.loading = 'lazy'
-        gallery.appendChild(img)
+      const res2 = await fetch('images_by_section.json')
+      if(!res2.ok) throw new Error('Failed to load images_by_section.json')
+      const map = await res2.json()
+      Object.keys(map).forEach(sectionKey=>{
+        const container = document.getElementById('gallery-' + sectionKey)
+        if(!container) return
+        container.innerHTML = ''
+        map[sectionKey].forEach(item=>{
+          const figure = document.createElement('figure')
+          const img = document.createElement('img')
+          img.src = item.src
+          img.alt = item.alt || ''
+          img.setAttribute('data-full', item.src)
+          img.loading = 'lazy'
+          if(item.credit) img.setAttribute('data-credit', item.credit)
+          figure.appendChild(img)
+          if(item.credit){
+            const figcap = document.createElement('figcaption')
+            figcap.textContent = item.credit
+            figure.appendChild(figcap)
+          }
+          container.appendChild(figure)
+        })
       })
     }catch(err){
-      console.warn('Could not load images.json, falling back to inline images if present', err)
-      // If fetch fails, leave gallery empty (user can add images manually)
-      gallery.innerHTML = '<p>Không thể tải danh sách ảnh. Vui lòng mở trang qua HTTP server hoặc kiểm tra images.json.</p>'
+      console.warn('Could not load images_by_section.json', err)
     }
   }
 
@@ -41,7 +103,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     const t = e.target
     if(t && t.tagName === 'IMG'){
       const full = t.getAttribute('data-full') || t.src
+      const credit = t.getAttribute('data-credit') || ''
       openLightbox(full, t.alt)
+      const captionEl = document.getElementById('lightboxCaption')
+      if(captionEl) captionEl.textContent = credit
     }
   })
 

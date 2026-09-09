@@ -37,3 +37,31 @@ Tệp quan trọng:
 - [script.js](script.js) — JS nhỏ cho gallery.
 
 Muốn mở rộng: thêm ảnh vào thư mục `images/`, cập nhật nội dung, hoặc bổ sung trang tiếng Anh.
+
+Script hỗ trợ và tự động hoá:
+
+- `scripts/move_images.py`: di chuyển các ảnh trong `images/` vào các thư mục theo quy ước (ví dụ `attractions`, `history`, `culture`, `food`) và cập nhật `images_by_section.json`.
+- `scripts/optimize_images.py`: tạo `thumbnail` và `webp` cho tất cả ảnh trong `images/` và xuất sang `images/optimized/` (cần Pillow).
+
+Chạy ví dụ:
+
+```bash
+# Di chuyển ảnh vào thư mục tương ứng
+python scripts/move_images.py
+
+# Cài dependencies và tối ưu ảnh
+pip install -r requirements.txt
+python scripts/optimize_images.py
+```
+
+ Sau khi chạy, kiểm tra `images_by_section.json` để đảm bảo đường dẫn ảnh đúng. Nếu muốn, tôi có thể tự chạy các script này nếu bạn cho phép (yêu cầu quyền chạy trên máy).
+
+Gallery folder automation:
+
+- To show images placed under `images/gallery/`, generate `images/gallery/index.json` by running:
+
+```bash
+python scripts/gen_gallery_index.py
+```
+
+The site will prefer `images/gallery/index.json` for the main `Thư viện ảnh` section. You can manually edit the generated JSON to add captions or credits.

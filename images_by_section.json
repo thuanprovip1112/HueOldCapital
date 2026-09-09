@@ -1,0 +1,18 @@
+{
+  "attractions": [
+    { "src": "images/attractions/dainoi.jpg", "alt": "Đại Nội Huế" },
+    { "src": "images/attractions/songhuong.png", "alt": "Sông Hương" },
+    { "src": "images/attractions/chuathienmu.png", "alt": "Chùa Thiên Mụ" },
+    { "src": "images/attractions/quochoc.jpg", "alt": "Quốc Học Huế" }
+  ],
+  "history": [
+    { "src": "images/attractions/dainoi.jpg", "alt": "Đại Nội Huế (lịch sử)" }
+  ],
+  "culture": [],
+  "food": [
+    { "src": "images/food/banhnam.jpg", "alt": "Bánh nậm" },
+    { "src": "images/food/bunbo.jpg", "alt": "Bún bò Huế" },
+    { "src": "images/food/mexung.jpg", "alt": "Mè xửng" },
+    { "src": "images/food/ramit.jpg", "alt": "Bánh ít ram" }
+  ]
+}
