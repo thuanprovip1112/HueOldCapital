@@ -1,0 +1,9 @@
+/* Chỉnh kích thước ảnh cho phần Góc nhìn Huế */
+.icon-img {
+  width: 100%;       /* Chiều rộng chiếm toàn bộ khung chứa */
+  max-width: 200px;  /* Giới hạn chiều rộng tối đa là 200px (thay đổi tùy ý) */
+  height: auto;      /* Giữ nguyên tỷ lệ chiều cao, tránh móp ảnh */
+  display: block;
+  margin: 0 auto;    /* Căn giữa ảnh trong thẻ icon */
+  border-radius: 8px; /* Bo góc ảnh (tùy chọn) */
+}
